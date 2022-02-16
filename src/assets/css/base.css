@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    background: #f4f4f4;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(80, 80, 80, 0.87);
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 5px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(150 137 137 / 34%);
+    border-radius: 0;
+}
+
+.wrap-title {
+    font-family: "宋体";
+    margin: 0;
+    padding: 6px 0;
+    border-bottom: 1px solid #666;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+}
+
+input {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: #0e0d0d;
+}
