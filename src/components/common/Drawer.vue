@@ -10,7 +10,7 @@
     <div><img src="@/assets/img/logo/title.png" /></div>
     <search-bar></search-bar>
     <div class="sign">
-      <router-link to="/login">登录</router-link>
+      <router-link to="/login">登录</router-link>/
       <router-link to="/register">注册</router-link>
     </div>
   </el-drawer>

@@ -41,7 +41,7 @@
   </el-form>
 </template>
 <script>
-import { collect } from "@/util/admin";
+import { collect } from "util/admin";
 export default {
   name: "CollectForm",
   data() {

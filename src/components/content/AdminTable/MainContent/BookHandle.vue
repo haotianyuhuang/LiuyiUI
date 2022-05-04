@@ -5,9 +5,9 @@
   </div>
 </template>
 <script>
-import { show } from "@/util/admin";
-import BookTable from "@/components/common/Book/BookTable";
-import BookPage from "@/components/common/Book/BookPage";
+import { show } from "util/admin";
+import BookTable from "components/common/Book/BookTable";
+import BookPage from "components/common/Book/BookPage";
 export default {
   components: { BookTable, BookPage },
   name: "BookHandle",

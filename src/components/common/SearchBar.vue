@@ -60,10 +60,13 @@ export default {
   height: 32px;
   font-size: 15px;
   border-bottom: 2px solid #aaa;
+  border-top: none;
   border-right: none;
+  border-left: none;
   color: #fff;
   transition: color 0.3s, border 0.3s;
   margin: 0 10px;
+  background: transparent;
 }
 
 .search-box::placeholder {

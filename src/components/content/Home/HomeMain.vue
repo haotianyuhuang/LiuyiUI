@@ -16,11 +16,11 @@
   </div>
 </template>
 <script>
-import RenQi from "@/components/content/Recommend/Home/RenQi.vue";
-import XinXiu from "@/components/content/Recommend/Home/XinXiu.vue";
-import Loop from "@/components/content/Recommend/Carousel/Loop.vue";
-import ReMen from "@/components/content/Recommend/Home/ReMen.vue";
-import XianShi from "@/components/content/Recommend/Home/XianShi.vue";
+import RenQi from "components/content/Recommend/Home/RenQi.vue";
+import XinXiu from "components/content/Recommend/Home/XinXiu.vue";
+import Loop from "components/content/Recommend/Carousel/Loop.vue";
+import ReMen from "components/content/Recommend/Home/ReMen.vue";
+import XianShi from "components/content/Recommend/Home/XianShi.vue";
 export default {
   name: "HomeMain",
   data() {

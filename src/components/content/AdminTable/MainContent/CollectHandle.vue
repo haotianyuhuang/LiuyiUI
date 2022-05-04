@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import CollectForm from "@/components/common/Collect/CollectForm.vue";
+import CollectForm from "components/common/Collect/CollectForm.vue";
 export default {
   components: { CollectForm },
   name: "CollectHandle",

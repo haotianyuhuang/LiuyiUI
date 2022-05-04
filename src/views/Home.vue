@@ -7,11 +7,11 @@
   </div>
 </template>
 <script>
-import { getrec } from "@/util/sedata";
-import Logo from "@/components/content/Home/Logo.vue";
-import HomeMain from "@//components/content/Home/HomeMain.vue";
-import HomeNav from "@/components/content/Home/HomeNav.vue";
-import Drawer from "@/components/common/Drawer.vue";
+import { getrec } from "util/sedata";
+import Logo from "components/content/Home/Logo.vue";
+import HomeMain from "components/content/Home/HomeMain.vue";
+import HomeNav from "components/content/Home/HomeNav.vue";
+import Drawer from "components/common/Drawer.vue";
 export default {
   name: "Home",
   components: {

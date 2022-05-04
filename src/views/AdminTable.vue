@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import SideMenu from "@/components/content/AdminTable/SideMenu.vue";
+import SideMenu from "components/content/AdminTable/SideMenu.vue";
 export default {
   components: { SideMenu },
   name: "AdminTable",

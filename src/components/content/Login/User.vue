@@ -1,19 +1,20 @@
 <template>
   <div class="user">
-    <div class="input-box">
+    <div class="login-input-box">
       <i class="iconfont icon-wode"></i>
       <input type="text" v-model="input1" placeholder="用户名/账号/手机号" />
     </div>
-    <div class="input-box">
+    <div class="login-input-box">
       <i class="iconfont icon-mima"></i>
       <input type="password" v-model="input2" placeholder="密码" />
     </div>
-    <div class="input-box">
+    <div class="login-input-box">
       <i class="iconfont icon-yanzhengmabeifen"></i>
       <input type="text" v-model="input3" placeholder="验证码" maxlength="4" />
+      <span style="font-size: 5px">看不清刷新</span>
       <img src="@/assets/img/captcha.png" />
     </div>
-    <button @click="sendInput()">登 录</button>
+    <button @click="sendInput()">登&nbsp;&nbsp;&nbsp;录</button>
   </div>
 </template>
 <script>
@@ -46,30 +47,28 @@ export default {
   margin: 0 10px;
 }
 
-input {
+.login input {
   border: none;
   width: 80%;
-  font-size: 17px;
-  height: 40px;
+  font-size: 18px;
   background: transparent;
+  font-family: "幼圆";
 }
 
-.input-box {
+.login-input-box {
   line-height: 40px;
-  display: flex;
   margin: 20px 0 30px;
-  border: 1px solid #fff;
   border-radius: 3px;
+  border-bottom: 1px solid #fff;
 }
 
-.input-box:nth-child(3) input {
-  width: 50%;
+.login-input-box:nth-child(3) input {
+  width: 30%;
 }
 
-.input-box:nth-child(3) img {
-  width: 35%;
+.login-input-box:nth-child(3) img {
+  width: 32%;
   float: right;
-  margin: 3px 5px;
   line-height: 40px;
   height: 36px;
 }
@@ -77,6 +76,7 @@ input {
 .user button,
 .admin button {
   border: none;
+  margin-top: 20px;
   width: 100%;
   height: 35px;
   font-size: 18px;
@@ -86,8 +86,13 @@ input {
   transition: background-color 0.3s;
 }
 
-button:hover {
+.user button:hover,
+.admin button:hover {
   background: #ed4259;
   cursor: pointer;
+}
+
+.login-input-box span:hover {
+  color: #f34a41;
 }
 </style>

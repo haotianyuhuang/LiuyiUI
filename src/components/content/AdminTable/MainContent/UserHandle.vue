@@ -5,9 +5,9 @@
   </div>
 </template>
 <script>
-import { show } from "@/util/admin";
-import UserTable from "@/components/common/User/UserTable";
-import UserPage from "@/components/common/User/UserPage";
+import { show } from "util/admin";
+import UserTable from "components/common/User/UserTable";
+import UserPage from "components/common/User/UserPage";
 export default {
   components: { UserTable, UserPage },
   name: "UserHandle",

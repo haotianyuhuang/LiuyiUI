@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import { searchInfo } from "@/util/sedata";
-import { searchList } from "@/util/sedata";
-import { recInfo } from "@/util/sedata";
-import BookList from "@/components/content/BookInfo/BookList.vue";
-import BookDesc from "@/components/content/BookInfo/BookDesc.vue";
+import { searchInfo } from "util/sedata";
+import { searchList } from "util/sedata";
+import { recInfo } from "util/sedata";
+import BookList from "components/content/BookInfo/BookList.vue";
+import BookDesc from "components/content/BookInfo/BookDesc.vue";
 
 export default {
   name: "BookInfo",

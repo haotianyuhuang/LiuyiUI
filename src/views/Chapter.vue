@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import { searchChapter } from "@/util/sedata";
-import ChapterContent from "@/components/content/Chapter/ChapterContent.vue";
-import ChapterComment from "@/components/content/Chapter/ChapterComment.vue";
-// import RightList from "@/components/content/Chapter/RightList.vue";
-// import LeftList from "@/components/content/Chapter/LeftList.vue";
+import { searchChapter } from "util/sedata";
+import ChapterContent from "components/content/Chapter/ChapterContent.vue";
+import ChapterComment from "components/content/Chapter/ChapterComment.vue";
+// import RightList from "components/content/Chapter/RightList.vue";
+// import LeftList from "components/content/Chapter/LeftList.vue";
 export default {
   name: "Chapter",
   components: {

@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-import SearchWrap from "@/components/common/SearchWrap.vue";
+import SearchWrap from "components/common/SearchWrap.vue";
 export default {
   name: "Logo",
   components: {

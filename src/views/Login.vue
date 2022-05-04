@@ -16,8 +16,8 @@
   </div>
 </template>
 <script>
-import Admin from "@/components/content/Login/Admin.vue";
-import User from "@/components/content/Login/User.vue";
+import Admin from "components/content/Login/Admin.vue";
+import User from "components/content/Login/User.vue";
 export default {
   name: "Login",
   components: { User, Admin },
@@ -37,33 +37,32 @@ export default {
 </script>
 <style scoped>
 .login {
-  background-image: url(~@/assets/img/bg/login.jpg);
-  background-position: bottom center;
-  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(~@/assets/img/bg/95668721_p0.jpg) no-repeat fixed center;
   background-size: cover;
-  height: 100vh;
 }
 
-.current {
-  border-bottom: 2px solid #df1c15 !important;
+.login .current {
+  border-bottom: 2px solid #df1c15;
 }
 
 .account {
-  position: fixed;
-  right: 50px;
-  top: 100px;
   width: 380px;
   height: 450px;
   border: 2px solid #d5d7f3;
-  border-radius: 3px;
-  box-shadow: 0 0 10px #c9c5c5;
-  background: rgba(255, 255, 255, 79%);
+  border-radius: 5px;
+  box-shadow: 0 0 5px #e0dede;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .box_title {
   display: flex;
   justify-content: space-around;
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .box_title span {

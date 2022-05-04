@@ -5,10 +5,10 @@
   </div>
 </template>
 <script>
-import { searchBook } from "@/util/sedata";
-import { searchAuthor } from "@/util/sedata";
-import SearchMain from "@/components/content/Search/SearchMain.vue";
-import SearchBox from "@/components/common/SearchBox.vue";
+import { searchBook } from "util/sedata";
+import { searchAuthor } from "util/sedata";
+import SearchMain from "components/content/Search/SearchMain.vue";
+import SearchBox from "components/common/SearchBox.vue";
 export default {
   name: "Search",
   components: {

@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import From from "@/components/content/Register/From.vue";
+import From from "components/content/Register/From.vue";
 export default {
   components: { From },
   name: "Register",
