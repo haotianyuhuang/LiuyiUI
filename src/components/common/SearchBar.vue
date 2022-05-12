@@ -8,7 +8,7 @@
       v-model="input"
       @keyup.enter="jump"
     />
-    <i class="iconfont icon-31sousuo" @click="jump()"></i>
+    <i class="iconfont" @click="jump()">&#xe606;</i>
   </div>
 </template>
 <script>

@@ -22,9 +22,7 @@
 </template>
 
 <script>
-import { searchInfo } from "util/sedata";
-import { searchList } from "util/sedata";
-import { recInfo } from "util/sedata";
+import { getBook } from "util/network";
 import BookList from "components/content/BookInfo/BookList.vue";
 import BookDesc from "components/content/BookInfo/BookDesc.vue";
 
@@ -45,37 +43,39 @@ export default {
     };
   },
   created() {
-    let bookid = this.$route.params.bookid;
-    if (bookid == "home") {
-      let link = sessionStorage.getItem("link");
-      recInfo(link).then((res) => {
-        document.title = res.data.list.title;
-        this.desc = res.data.desc;
-        this.brief = res.data.desc.desc;
-        this.booklist = res.data.list;
-        this.total_chapter = res.data.list.chapter.length;
-        this.loading = false;
-      });
-    } else {
-      searchList(this.$route.params.bookid).then((res) => {
-        this.booklist = res.data;
-        this.total_chapter = res.data.chapter.length;
-        document.title = res.data.title;
-        searchInfo(res.data.title).then((res) => {
-          this.desc = res.data[0];
-          this.brief = res.data[0].desc;
-          this.loading = false;
-        });
-      });
-    }
+    this.bookinfo();
   },
-  mounted() {},
   methods: {
     change(num) {
       if (num == 2) {
         this.isShow = true;
       } else {
         this.isShow = false;
+      }
+    },
+    bookinfo() {
+      let bookid = this.$route.params.bookid;
+      if (bookid == "home") {
+        let link = sessionStorage.getItem("link");
+        getBook(3, { link: link }).then((res) => {
+          document.title = res.data.list.title;
+          this.desc = res.data.desc;
+          this.brief = res.data.desc.desc;
+          this.booklist = res.data.list;
+          this.total_chapter = res.data.list.chapter.length;
+          this.loading = false;
+        });
+      } else {
+        getBook(4, { bookid: this.$route.params.bookid }).then((res) => {
+          this.booklist = res.data;
+          this.total_chapter = res.data.chapter.length;
+          document.title = res.data.title;
+          getBook(2, { bookname: res.data.title }).then((res) => {
+            this.desc = res.data[0];
+            this.brief = res.data[0].desc;
+            this.loading = false;
+          });
+        });
       }
     },
   },

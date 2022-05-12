@@ -46,7 +46,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .book {
   display: flex;
   padding: 3% 10%;

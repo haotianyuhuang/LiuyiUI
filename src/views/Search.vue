@@ -5,8 +5,7 @@
   </div>
 </template>
 <script>
-import { searchBook } from "util/sedata";
-import { searchAuthor } from "util/sedata";
+import { getBook } from "util/network";
 import SearchMain from "components/content/Search/SearchMain.vue";
 import SearchBox from "components/common/SearchBox.vue";
 export default {
@@ -21,18 +20,18 @@ export default {
     };
   },
   created() {
-    this.getBooklist();
+    this.search();
   },
   methods: {
-    getBooklist() {
+    search() {
       let kw = this.$route.query.kw;
       let ty = this.$route.query.ty;
       if (ty == 1) {
-        searchAuthor(kw).then((res) => {
+        getBook(1, { author: kw }).then((res) => {
           this.books = res.data;
         });
       } else {
-        searchBook(kw).then((res) => {
+        getBook(0, { bookname: kw }).then((res) => {
           this.books = res.data;
         });
       }

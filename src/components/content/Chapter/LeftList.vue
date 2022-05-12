@@ -1,17 +1,13 @@
 <template>
-  <div class="left_list">
+  <div class="left_list" :style="{ background: $store.state.pageColor }">
     <dl>
       <dd>
-        <i class="iconfont icon-31leimu"></i>
+        <i class="iconfont">&#xe605;</i>
         <span>目录</span>
       </dd>
-      <dd>
-        <img src="@/assets/img/shezhi.png" />
+      <dd @click="showHandle()">
+        <i class="iconfont">&#xe68f;</i>
         <span>设置</span>
-      </dd>
-      <dd>
-        <img src="@/assets/img/jiashu.png" />
-        <span>书架</span>
       </dd>
     </dl>
   </div>
@@ -19,32 +15,45 @@
 <script>
 export default {
   name: "LeftList",
+  methods: {
+    showHandle() {
+      this.$store.commit("showHandle");
+    },
+  },
 };
 </script>
-<style>
+<style scoped>
 .left_list {
   position: fixed;
   top: 0;
   left: 0;
   width: 50px;
   text-align: center;
-  background: #f3e9c6 url(~@/assets/img/bg/read_01.png) repeat;
 }
 
-dd img {
-  width: 25px;
-  height: 25px;
+dd,
+dl {
+  margin: 0 auto;
+  font-size: 12px;
 }
 
-dd span {
-  margin: 5px 0;
+dd {
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #82817c;
+  transition: all 0.5s ease;
 }
 
-dd:hover {
-  color: #da4040;
-}
-
-.icon-31leimu {
+.iconfont {
   font-size: 25px;
+  transition: all 0.3s ease;
+}
+
+.iconfont:hover,
+dd:hover {
+  color: #fff;
+  background: #f32727;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
   <div class="bar">
     <input
-      placeholder="请输入书名/作者名"
+      placeholder="请输入书名"
       type="text"
       v-model="keyword"
       @keyup.enter="getKeyword()"
     />
-    <i class="iconfont icon-31sousuo" @click="getKeyword()"></i>
+    <i class="iconfont" @click="getKeyword()">&#xe606;</i>
   </div>
 </template>
 <script>
@@ -57,7 +57,7 @@ i {
   padding-right: 5px;
 }
 
-.icon-31sousuo {
-  font-size: 40px;
+.iconfont {
+  font-size: 38px;
 }
 </style>

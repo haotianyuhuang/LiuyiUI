@@ -5,7 +5,7 @@
     </div>
     <search-wrap></search-wrap>
     <router-link class="book-shelf" to="/shelf">
-      <i class="iconfont icon-line-bookmarksshuqian"></i>
+      <i class="iconfont">&#xe620;</i>
       <span>我的书架</span>
     </router-link>
   </div>
@@ -19,19 +19,16 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .logo_wrap {
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  padding: 1% 0;
-}
-
-.icon-line-bookmarksshuqian {
-  font-size: 36px;
+  background: #fff;
 }
 
 .book-shelf {
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   margin-left: 110px;
   border: 1px solid #fff;
 }
@@ -43,13 +40,7 @@ export default {
   border-radius: 3px;
 }
 
-.book-shelf span {
-  float: right;
-  padding: 0 5px;
-  line-height: 36px;
-}
-
-.logo {
-  margin-left: 70px;
+.iconfont {
+  font-size: 28px;
 }
 </style>

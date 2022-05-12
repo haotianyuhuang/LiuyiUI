@@ -1,11 +1,24 @@
 <template>
-  <div class="content">
+  <div
+    class="content"
+    :style="{
+      background: $store.state.pageColor,
+      width: $store.state.pageWidth,
+    }"
+  >
     <transition name="fade">
       <div class="text_title" v-if="show">{{ text.title }}</div>
     </transition>
     <div class="text_content">
       <ul>
-        <li v-for="(item, index) in text.content" :key="index">
+        <li
+          v-for="(item, index) in text.content"
+          :key="index"
+          :style="{
+            'font-size': $store.state.pageSize,
+            'font-family': $store.state.pageFont,
+          }"
+        >
           <transition name="fade">
             <p v-if="show">{{ item }}</p>
           </transition>
@@ -46,8 +59,6 @@ export default {
 .content {
   overflow-y: scroll;
   position: relative;
-  width: 800px;
-  background: url(~@/assets/img/bg/chapter_01.png) repeat;
 }
 
 .text_title {
@@ -63,6 +74,5 @@ export default {
 
 li {
   line-height: 1.8;
-  font-size: 18px;
 }
 </style>

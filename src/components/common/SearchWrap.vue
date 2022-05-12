@@ -7,7 +7,7 @@
       v-model="input"
       @keyup.enter="jump"
     />
-    <i class="iconfont icon-31sousuo" @click="jump()"></i>
+    <i class="iconfont" @click="jump()">&#xe606;</i>
   </div>
 </template>
 <script>
@@ -38,7 +38,7 @@ export default {
 </script>
 <style scoped>
 .search_wrap {
-  margin: 0 200px;
+  display: flex;
 }
 .search-box {
   width: 320px;
@@ -53,9 +53,7 @@ i {
   background: #bf2c24;
 }
 
-.icon-31sousuo {
-  float: right;
+.iconfont {
   font-size: 38px;
-  color: white;
 }
 </style>

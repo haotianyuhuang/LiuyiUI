@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import { getrec } from "util/sedata";
+import { getBook } from "util/network";
 import Logo from "components/content/Home/Logo.vue";
 import HomeMain from "components/content/Home/HomeMain.vue";
 import HomeNav from "components/content/Home/HomeNav.vue";
@@ -27,38 +27,27 @@ export default {
     };
   },
   created() {
-    getrec().then((res) => {
-      this.list = res.data.list;
-      let books = res.data.shouye;
-      this.recbooks = {
-        lunbotu: res.data.lunbotu,
-        renqi: books.slice(0, 17),
-        xinxiu: books.slice(17, 34),
-        remen: books.slice(34, 49),
-        xianshi: books.slice(49, 53),
-      };
-    });
+    this.homeData();
   },
-  methods: {},
+  methods: {
+    homeData() {
+      let data = {
+        index: 0,
+      };
+      getBook(6, data).then((res) => {
+        this.list = res.data.list;
+        let books = res.data.shouye;
+        this.recbooks = {
+          lunbotu: res.data.lunbotu,
+          renqi: books.slice(0, 17),
+          xinxiu: books.slice(17, 34),
+          remen: books.slice(34, 49),
+          xianshi: books.slice(49, 53),
+        };
+      });
+    },
+  },
 };
 </script>
 <style scoped>
-.home {
-  overflow: hidden;
-}
-
-.logo_wrap {
-  width: 1366px;
-  background: #fff;
-}
-
-.main {
-  width: 1220px;
-}
-
-.main,
-.logo_wrap {
-  position: relative;
-  margin: 0 auto;
-}
 </style>

@@ -1,16 +1,25 @@
 <template>
-  <div class="comment">
-    <div class="comment_box">
-      <div class="send_comment">
-        <textarea placeholder="有什么想法快写下来吧" maxlength="150"></textarea>
-        <div class="tool">
-          <img src="@/assets/img/emoji.png" />
-          <span class="send">发布</span>
+  <transition name="left-comment">
+    <div
+      class="comment"
+      v-if="$store.state.comment"
+      :style="{ background: $store.state.pageColor }"
+    >
+      <div class="comment_box">
+        <div class="send_comment">
+          <textarea
+            placeholder="有什么想法快写下来吧"
+            maxlength="150"
+            v-model="comment"
+          ></textarea>
+          <div class="tool">
+            <span class="send" @click="getComment">发布</span>
+          </div>
         </div>
       </div>
+      <show-comment></show-comment>
     </div>
-    <show-comment></show-comment>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -19,16 +28,29 @@ export default {
   components: { ShowComment },
   name: "ChapterComment",
   data() {
-    return {};
+    return {
+      comment: "",
+    };
   },
-  created() {},
-  watch: {},
-  mounted() {},
-  methods: {},
+  methods: {
+    getComment() {
+      this.$store.commit("increment");
+    },
+  },
 };
 </script>
 
 <style scoped>
+.left-comment-enter-active,
+.left-comment-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.left-comment-enter,
+.left-comment-leave-to {
+  opacity: 0;
+  transform: translateY(-100px);
+}
 .tool {
   display: flex;
   align-items: center;
@@ -48,6 +70,7 @@ export default {
   border-radius: 3px;
   background: #bf2c24;
   margin-right: 10px;
+  transition: background 0.3s ease;
 }
 
 .tool img {
@@ -60,7 +83,6 @@ export default {
   position: relative;
   border-left: 1px solid #b1b1b1fa;
   width: 350px;
-  background: url(~@/assets/img/bg/chapter_01.png) repeat;
   padding: 5px;
 }
 
@@ -85,9 +107,8 @@ textarea {
   padding: 5px;
 }
 
-/* .comment_box,
-.send_comment,
-.show_comments {
-  border: 1px solid;
-} */
+.send:hover {
+  background: #fa1909;
+  cursor: pointer;
+}
 </style>

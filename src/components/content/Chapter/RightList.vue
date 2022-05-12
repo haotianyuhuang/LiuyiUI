@@ -1,16 +1,16 @@
 <template>
-  <div class="right_list">
+  <div class="right_list" :style="{ background: $store.state.pageColor }">
     <dl>
-      <dd @click="achieve()">
-        <i class="iconfont icon-31pinglun"></i>
+      <dd @click="active()">
+        <i class="iconfont">&#xe600;</i>
         <span>评论</span>
       </dd>
       <dd>
-        <i class="iconfont icon-iconfontzhizuobiaozhun023148"></i>
+        <i class="iconfont">&#xe696;</i>
         <span>点赞</span>
       </dd>
       <dd @click="backTop()" title="返回顶部" v-if="is_Stretch">
-        <i class="iconfont icon-31huidaodingbu"></i>
+        <i class="iconfont">&#xe607;</i>
       </dd>
     </dl>
   </div>
@@ -50,21 +50,20 @@ export default {
       });
     },
 
-    achieve() {
-      this.$emit("clickvalue", true);
+    active() {
+      this.$store.commit("showComment");
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 .right_list {
   position: fixed;
   bottom: 0;
   right: 0;
   width: 50px;
   text-align: center;
-  background: #f3e9c6 url(~@/assets/img/bg/read_02.png) repeat;
 }
 
 dd,
@@ -79,11 +78,17 @@ dd {
   flex-direction: column;
   align-items: center;
   border-bottom: 1px solid #82817c;
+  transition: all 0.5s ease;
 }
 
-.icon-iconfontzhizuobiaozhun023148,
-.icon-31pinglun,
-.icon-31huidaodingbu {
+.iconfont {
   font-size: 25px;
+  transition: all 0.3s ease;
+}
+
+.iconfont:hover,
+dd:hover {
+  color: #fff;
+  background: #f32727;
 }
 </style>
