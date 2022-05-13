@@ -12,6 +12,7 @@
 
 <script>
 import { getBook } from "util/network";
+import { getShelf } from "util/network";
 import ChapterContent from "components/content/Chapter/ChapterContent.vue";
 import ChapterComment from "components/content/Chapter/ChapterComment.vue";
 import RightList from "components/content/Chapter/RightList.vue";
@@ -28,6 +29,9 @@ export default {
   },
   created() {
     this.getText();
+    setTimeout(() => {
+      this.syshelf();
+    }, 3000);
   },
   data() {
     return {
@@ -36,11 +40,24 @@ export default {
   },
   methods: {
     getText() {
-      document.title = decodeURI(sessionStorage.getItem("chapter"));
+      document.title = "第" + this.$route.params.chapterid + "章";
       let bookid = this.$route.params.bookid;
       let chapterid = this.$route.params.chapterid;
       getBook(5, { bookid: bookid, chapterid: chapterid }).then((res) => {
         this.chapter = res.data;
+      });
+    },
+    syshelf() {
+      getShelf(
+        3,
+        {
+          title: sessionStorage.getItem("title"),
+          book_id: this.$route.params.bookid,
+          chapter_id: this.$route.params.chapterid,
+        },
+        this.$store.state.token
+      ).then((res) => {
+        console.log(res);
       });
     },
   },

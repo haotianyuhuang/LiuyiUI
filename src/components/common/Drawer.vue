@@ -9,7 +9,7 @@
   >
     <div><img src="@/assets/img/logo/title.png" /></div>
     <search-bar></search-bar>
-    <div class="sign">
+    <div class="sign" v-if="$store.state.token == null">
       <router-link to="/login">登录</router-link>/
       <router-link to="/register">注册</router-link>
     </div>

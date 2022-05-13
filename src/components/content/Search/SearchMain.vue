@@ -17,7 +17,7 @@
         </div>
         <div class="btn">
           <span @click="getBookid(item)">书籍详情</span>
-          <span>加入书架</span>
+          <span @click="addBook(item)">加入书架</span>
         </div>
       </li>
     </ul>
@@ -25,11 +25,13 @@
 </template>
 
 <script>
+import { getShelf } from "util/network";
 export default {
   name: "SearchMain",
   props: ["cbooks"],
   methods: {
     getBookid(bookid) {
+      sessionStorage.setItem("title", bookid.title);
       let url = this.$router.resolve({
         path: "/info" + "/" + bookid.link,
       });
@@ -41,6 +43,11 @@ export default {
         query: { kw: a, ty: 1 },
       });
       window.open(url.href, "_self");
+    },
+    addBook(item) {
+      getShelf(2, item, this.$store.state.token).then((res) => {
+        console.log(res);
+      });
     },
   },
 };

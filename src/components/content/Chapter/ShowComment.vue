@@ -1,13 +1,21 @@
 <template>
   <div class="show_comments">
-    <ul v-for="(item, index) in comments" :key="index" class="root_comment">
-      <li>
+    <ul
+      class="show_comment_box"
+      v-for="(item, index) in ccomments"
+      :key="index"
+    >
+      <li class="commenter_info">
+        <span>{{ item.nick }}</span>
+        <span>{{ item.create_time }}</span>
+      </li>
+      <!-- <li>
         {{ item.content }}
       </li>
       <span class="date">
-        {{ item.date }}
-      </span>
-      <span class="reply" @click="active(index)">回复</span>
+        {{ item.update_time }}
+      </span> -->
+      <!-- <span class="reply" @click="active(index)">回复</span>
       <ul v-for="(value, key) in item.reply" :key="key" class="reply_comment">
         <li>
           {{ value.content }}
@@ -23,13 +31,14 @@
       </div>
       <div class="total">
         {{ item.total_comments }}
-      </div>
+      </div> -->
     </ul>
   </div>
 </template>
 <script>
 export default {
   name: "ShowComment",
+  props: ["ccomments"],
   data() {
     return {
       isActive: null,

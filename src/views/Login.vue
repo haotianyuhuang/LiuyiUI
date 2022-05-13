@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import { getAdmin } from "util/network";
+import { getUser } from "util/network";
 export default {
   name: "Login",
   data() {
@@ -93,8 +93,18 @@ export default {
         username: this.user,
         password: this.psw,
       };
-      getAdmin(0, data).then((res) => {
-        console.log(res);
+      getUser(0, data).then((res) => {
+        if (res.data.code == 200) {
+          // console.log(res.data.data);
+          localStorage.setItem("nick", res.data.data.nick);
+          localStorage.setItem("token", res.data.data.token.data);
+          this.$router.replace({
+            path: "/home",
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 100);
+        }
       });
     },
   },

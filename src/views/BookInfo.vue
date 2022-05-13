@@ -64,17 +64,19 @@ export default {
           this.booklist = res.data.list;
           this.total_chapter = res.data.list.chapter.length;
           this.loading = false;
+          console.log(res);
         });
       } else {
+        let title = sessionStorage.getItem("title");
+        document.title = title;
         getBook(4, { bookid: this.$route.params.bookid }).then((res) => {
           this.booklist = res.data;
           this.total_chapter = res.data.chapter.length;
-          document.title = res.data.title;
-          getBook(2, { bookname: res.data.title }).then((res) => {
-            this.desc = res.data[0];
-            this.brief = res.data[0].desc;
-            this.loading = false;
-          });
+        });
+        getBook(2, { bookname: title }).then((res) => {
+          this.desc = res.data[0];
+          this.brief = res.data[0].desc;
+          this.loading = false;
         });
       }
     },

@@ -1,18 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import Register from '../views/Register'
-import AdminTable from '../views/AdminTable'
-import RecKind from '../views/RecKind'
-import Shelf from '../views/Shelf'
-import BookInfo from '../views/BookInfo'
-import Chapter from '../views/Chapter'
-import Search from '../views/Search.vue'
-import UserHandle from '../components/content/AdminTable/MainContent/UserHandle.vue'
-import BookHandle from '../components/content/AdminTable/MainContent/BookHandle.vue'
-import CommentHandle from '../components/content/AdminTable/MainContent/CommentHandle.vue'
-import CollectHandle from '../components/content/AdminTable/MainContent/CollectHandle.vue'
+import Home from 'views/Home.vue'
+import Login from 'views/Login.vue'
+import Register from 'views/Register'
+import AdminTable from 'views/AdminTable'
+import RecKind from 'views/RecKind'
+import Shelf from 'views/Shelf'
+import BookInfo from 'views/BookInfo'
+import Chapter from 'views/Chapter'
+import Search from 'views/Search.vue'
+import UserHandle from 'components/content/AdminTable/MainContent/UserHandle.vue'
+import BookHandle from 'components/content/AdminTable/MainContent/BookHandle.vue'
+import CommentHandle from 'components/content/AdminTable/MainContent/CommentHandle.vue'
+import CollectHandle from 'components/content/AdminTable/MainContent/CollectHandle.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -62,7 +62,7 @@ const routes = [
     path: "/shelf",
     name: "shelf",
     component: Shelf,
-    meta: { title: "书架-个人中心-六一书苑" }
+    meta: { title: "书架-个人中心-六一书苑" },
   },
   {
     path: "/table",
@@ -104,7 +104,16 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  let token = localStorage.getItem("token");
   document.title = to.matched[0].meta.title;
-  next();
+  if (to.matched[0].name == "table" || to.matched[0].name == "shelf") {
+    if (token) {
+      next();
+    } else {
+      next({ name: 'login' })
+    }
+  } else {
+    next();
+  }
 })
 export default router

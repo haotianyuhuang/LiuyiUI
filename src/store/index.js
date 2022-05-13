@@ -5,12 +5,14 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
+        token: localStorage.getItem("token"),
+        nick: localStorage.getItem("nick"),
         comment: false,
         handle: false,
         pageColor: "#faf5eb repeat",
         pageFont: "",
         pageSize: "18px",
-        pageWidth: "800px"
+        pageWidth: "800px",
     },
     mutations: {
         showComment(state) {

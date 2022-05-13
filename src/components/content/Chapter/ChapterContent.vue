@@ -7,7 +7,7 @@
     }"
   >
     <transition name="fade">
-      <div class="text_title" v-if="show">{{ text.title }}</div>
+      <div class="text_title">{{ text.title }}</div>
     </transition>
     <div class="text_content">
       <ul>
@@ -20,7 +20,7 @@
           }"
         >
           <transition name="fade">
-            <p v-if="show">{{ item }}</p>
+            <p>{{ item }}</p>
           </transition>
         </li>
       </ul>
@@ -34,13 +34,13 @@ export default {
   props: ["text"],
   data() {
     return {
-      show: false,
+      // show: false,
     };
   },
   created() {
-    setTimeout(() => {
-      this.show = true;
-    }, 1000);
+    // setTimeout(() => {
+    //   this.show = true;
+    // }, 1000);
   },
   mounted() {},
 };

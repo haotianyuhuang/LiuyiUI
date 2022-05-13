@@ -54,6 +54,7 @@ export default {
   background: #3e3d43;
   height: 36px;
   font-family: 宋体;
+  font-size: 20px;
 }
 
 .nav ul {

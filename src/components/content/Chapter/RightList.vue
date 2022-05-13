@@ -6,11 +6,8 @@
         <span>评论</span>
       </dd>
       <dd>
-        <i class="iconfont">&#xe696;</i>
-        <span>点赞</span>
-      </dd>
-      <dd @click="backTop()" title="返回顶部" v-if="is_Stretch">
         <i class="iconfont">&#xe607;</i>
+        <span>返回顶部</span>
       </dd>
     </dl>
   </div>
@@ -20,36 +17,10 @@
 export default {
   name: "RightList",
   data() {
-    return {
-      is_Stretch: false,
-    };
+    return {};
   },
-  mounted() {
-    this.getTop();
-  },
+  mounted() {},
   methods: {
-    backTop() {
-      let timer = setInterval(() => {
-        document.documentElement.scrollTop -= 100;
-        if (document.documentElement.scrollTop == 0) {
-          clearInterval(timer);
-        }
-      }, 10);
-    },
-
-    getTop() {
-      window.addEventListener("scroll", () => {
-        let height = document.documentElement.scrollTop;
-        if (height >= 100) {
-          sessionStorage.setItem("height", height);
-          this.is_Stretch = true;
-        } else {
-          sessionStorage.removeItem("height");
-          this.is_Stretch = false;
-        }
-      });
-    },
-
     active() {
       this.$store.commit("showComment");
     },

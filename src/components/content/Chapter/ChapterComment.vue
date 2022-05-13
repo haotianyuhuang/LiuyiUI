@@ -17,12 +17,13 @@
           </div>
         </div>
       </div>
-      <show-comment></show-comment>
+      <show-comment :ccomments="tocomments"></show-comment>
     </div>
   </transition>
 </template>
 
 <script>
+import { getCR } from "util/network";
 import ShowComment from "./ShowComment.vue";
 export default {
   components: { ShowComment },
@@ -30,11 +31,24 @@ export default {
   data() {
     return {
       comment: "",
+      tocomments: "",
     };
+  },
+  created() {
+    this.totalcomment();
   },
   methods: {
     getComment() {
       this.$store.commit("increment");
+    },
+    totalcomment() {
+      let data = {
+        book_id: this.$route.params.bookid,
+        chapter_id: this.$route.params.chapterid,
+      };
+      getCR(3, data, this.$store.state.token).then((res) => {
+        this.tocomments = res.data;
+      });
     },
   },
 };

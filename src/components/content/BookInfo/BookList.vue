@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     getChapterid(value) {
-      sessionStorage.setItem("chapter", encodeURI(value.section));
+      sessionStorage.setItem("title", document.title);
       let url = this.$router.resolve({
         path: "/chapter" + "/" + this.cbooklist.bookid + "/" + value.link,
       });

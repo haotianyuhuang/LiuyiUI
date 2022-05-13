@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { getAdmin } from "util/network";
+import { getUser } from "util/network";
 export default {
   name: "Register",
   data() {
@@ -118,7 +118,7 @@ export default {
         nick: this.nick,
       };
       console.log(1, data);
-      getAdmin(1, data).then((res) => {
+      getUser(1, data).then((res) => {
         if (res.data.code == 206) {
           alert("用户名已存在！");
         } else if (res.data.code == 200) {
