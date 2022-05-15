@@ -1,10 +1,10 @@
 <template>
-  <transition name="enter-show" v-if="$store.state.table.is_show_notice">
-    <div class="send_from">
+  <transition name="enter-show" v-if="$store.state.table.is_updata">
+    <div class="updata_from">
       <div
         style="text-align: right; padding: 10px 15px 0 0"
         class="iconfont"
-        @click="$store.commit('addnotice')"
+        @click="$store.commit('updata')"
       >
         &#xe603;
       </div>
@@ -32,21 +32,24 @@
 <script>
 import { getNotice } from "util/admin";
 export default {
-  name: "Empty",
+  name: "EmptyTwo",
+  props: ["cinfo"],
   data() {
     return {
       formLabelAlign: {
+        title: "",
         content: "",
-        title: "公告",
-        nick: this.$store.state.nick,
+        id: "",
       },
     };
   },
   methods: {
     send() {
-      getNotice(1, this.formLabelAlign, this.$store.state.token).then(() => {
-        this.$store.commit("addnotice");
-        alert("发布成功!");
+      this.formLabelAlign.id = this.cinfo.id;
+      getNotice(2, this.formLabelAlign, this.$store.state.token).then((res) => {
+        alert("修改成功!");
+        this.$store.commit("updata");
+        console.log(res);
       });
     },
   },
@@ -54,7 +57,7 @@ export default {
 </script>
 
 <style>
-.send_from {
+.updata_from {
   width: 400px;
   height: 400px;
   position: fixed;
@@ -62,10 +65,6 @@ export default {
   box-shadow: 0 0 10px #8a8888;
   left: 40%;
   top: 20%;
-}
-.el-textarea__inner {
-  resize: none;
-  height: 120px;
 }
 
 .enter-show-enter-active,
@@ -79,15 +78,15 @@ export default {
   transform: translateY(-100px);
 }
 
-.send_from .iconfont {
+.updata_from .iconfont {
   transition: color 0.3s ease-in-out;
 }
 
-.send_from .iconfont:hover {
+.updata_from .iconfont:hover {
   color: #f12334;
 }
 
-.send_from .el-button--primary {
+.updata_from .el-button--primary {
   height: 30px;
   line-height: 0;
 }

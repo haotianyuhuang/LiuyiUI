@@ -1,6 +1,14 @@
 <template>
   <div style="display: flex">
-    <collect-form @test="showResult"></collect-form>
+    <div>
+      <el-switch
+        v-model="value"
+        active-color="#13ce66"
+        inactive-color="#ff4949"
+      >
+      </el-switch>
+    </div>
+    <collect-form @test="showResult" :cvalue="value"></collect-form>
     <textarea v-model="result"></textarea>
   </div>
 </template>
@@ -12,6 +20,7 @@ export default {
   data() {
     return {
       result: "",
+      value: true,
     };
   },
   methods: {

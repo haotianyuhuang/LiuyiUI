@@ -15,6 +15,7 @@
     <div class="shelf_main">
       <book-shelf v-if="isActive == 1" :books="shelf"></book-shelf>
       <book-history v-if="isActive == 2" :cinfo="info"></book-history>
+      <message-center v-if="isActive == 3"></message-center>
     </div>
   </div>
 </template>
@@ -22,8 +23,9 @@
 import { getShelf } from "util/network";
 import BookShelf from "components/content/Shelf/BookShelf.vue";
 import BookHistory from "components/content/Shelf/BookHistory.vue";
+import MessageCenter from "components/content/Shelf/MessageCenter.vue";
 export default {
-  components: { BookShelf, BookHistory },
+  components: { BookShelf, BookHistory, MessageCenter },
   name: "Shelf",
   data() {
     return {

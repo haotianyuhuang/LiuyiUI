@@ -1,11 +1,11 @@
 <template>
   <div class="left_list" :style="{ background: $store.state.pageColor }">
     <dl>
-      <dd>
+      <dd @click="showHandle(1)">
         <i class="iconfont">&#xe605;</i>
         <span>目录</span>
       </dd>
-      <dd @click="showHandle()">
+      <dd @click="showHandle(0)">
         <i class="iconfont">&#xe68f;</i>
         <span>设置</span>
       </dd>
@@ -16,8 +16,8 @@
 export default {
   name: "LeftList",
   methods: {
-    showHandle() {
-      this.$store.commit("showHandle");
+    showHandle(index) {
+      this.$store.commit("showHandle", index);
     },
   },
 };

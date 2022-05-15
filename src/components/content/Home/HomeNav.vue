@@ -40,10 +40,21 @@ export default {
   },
   methods: {
     change(num) {
-      console.log(num);
+      if (num == 0) {
+        this.$router.push("/home");
+      } else {
+        let url = this.$router.resolve({
+          path: "/kind" + "/" + num,
+        });
+        window.open(url.href, "_blank");
+      }
     },
     getIndex(index) {
-      console.log(index + 8);
+      let num = index + 8;
+      let url = this.$router.resolve({
+        path: "/kind" + "/" + num,
+      });
+      window.open(url.href, "_blank");
     },
   },
 };

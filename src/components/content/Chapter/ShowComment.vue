@@ -1,5 +1,6 @@
 <template>
   <div class="show_comments">
+    <div class="commnet_line_title"></div>
     <ul
       class="show_comment_box"
       v-for="(item, index) in ccomments"
@@ -7,94 +8,35 @@
     >
       <li class="commenter_info">
         <span>{{ item.nick }}</span>
-        <span>{{ item.create_time }}</span>
+        <span class="time">{{ item.create_time }}</span>
       </li>
-      <!-- <li>
-        {{ item.content }}
+      <li class="scontent" style="font-size: 14px">{{ item.content }}</li>
+      <li class="reply_info">
+        <div @click="getID(item)">
+          <i class="iconfont" style="color: #ada5a5">&#xe663;</i>
+          <i style="font-size: 14px; margin-left: 5px">回复</i>
+        </div>
       </li>
-      <span class="date">
-        {{ item.update_time }}
-      </span> -->
-      <!-- <span class="reply" @click="active(index)">回复</span>
-      <ul v-for="(value, key) in item.reply" :key="key" class="reply_comment">
-        <li>
-          {{ value.content }}
-        </li>
-        <span class="date">
-          {{ value.date }}
-        </span>
-        <span class="reply" @click="active(index)">回复</span>
-      </ul>
-      <div v-if="isActive == index">
-        <textarea maxlength="150" v-model="reply"></textarea>
-        <div><span @click="addreply(index)">发表</span></div>
-      </div>
-      <div class="total">
-        {{ item.total_comments }}
-      </div> -->
     </ul>
   </div>
 </template>
 <script>
+import { getCR } from "util/network";
 export default {
   name: "ShowComment",
   props: ["ccomments"],
   data() {
     return {
-      isActive: null,
-      reply: "",
-      content: "",
-      comment: {},
-      comments: [
-        {
-          content: "hello",
-          date: "2022-02-04 10:42",
-          total_comments: "共10条回复",
-          reply: [
-            {
-              content: "world",
-              date: "2022-02-04 11:00",
-            },
-          ],
-        },
-      ],
+      info: [],
     };
   },
   methods: {
-    active(index) {
-      this.isActive = index;
-    },
-    addlist() {
-      this.comment = {
-        content: this.content,
-        date: this.query(),
-        reply: [],
-      };
-      this.comments.push(this.comment);
-      this.comment = "";
-    },
-    addreply(index) {
-      this.comment = {
-        content: this.reply,
-        date: this.query(),
-      };
-      this.comments[index].reply.push(this.comment);
-      this.reply = "";
-      this.isActive = null;
-    },
-    query() {
-      let t = new Date();
-      let y = t.getFullYear();
-      let m = t.getMonth() + 1;
-      m = m < 10 ? "0" + m : m;
-      let d = t.getDate();
-      d = d < 10 ? "0" + d : d;
-      let h = t.getHours();
-      h = h < 10 ? "0" + h : h;
-      let min = t.getMinutes();
-      min = min < 10 ? "0" + min : min;
-      let date = y + "-" + m + "-" + d + " " + h + ":" + min;
-      return date;
+    getID(value) {
+      this.$store.commit("open_reply_list");
+      getCR(5, { id: value.id }, this.$store.state.token).then((res) => {
+        this.$store.commit("make", res.data);
+        console.log(this.$store.state.reply_data);
+      });
     },
   },
 };
@@ -103,39 +45,19 @@ export default {
 .show_comments {
   height: 420px;
   overflow-y: scroll;
+  padding: 10px;
 }
 
-.show_comments textarea {
-  resize: none;
-  width: 200px;
-  height: 40px;
-  padding: 5px;
+.show_comment_box {
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  border-radius: 3px;
+  margin: 10px 0;
 }
 
-.total,
-.reply,
-.date {
-  font-size: 12px;
-}
-
-.reply {
-  margin-left: 50px;
-}
-
-.reply:hover {
-  color: #00a1d6;
-  cursor: pointer;
-}
-
-.root_comment {
-  padding-left: 10px;
-}
-
-.reply_comment {
-  padding-left: 40px;
-}
-
-.reply_comment li {
-  font-size: 14px;
+.commenter_info {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
 }
 </style>

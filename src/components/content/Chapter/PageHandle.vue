@@ -129,7 +129,7 @@ export default {
         this.fontClick = "雅黑";
         this.$store.commit("restore");
       }
-      this.$store.commit("showHandle");
+      this.$store.commit("showHandle", 0);
     },
   },
 };

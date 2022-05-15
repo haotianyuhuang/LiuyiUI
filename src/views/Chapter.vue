@@ -7,6 +7,10 @@
     <right-list></right-list>
     <left-list></left-list>
     <page-handle></page-handle>
+    <chapter-list></chapter-list>
+    <transition name="enter-show" v-if="$store.state.is_center_show">
+      <show-reply></show-reply>
+    </transition>
   </div>
 </template>
 
@@ -18,6 +22,8 @@ import ChapterComment from "components/content/Chapter/ChapterComment.vue";
 import RightList from "components/content/Chapter/RightList.vue";
 import LeftList from "components/content/Chapter/LeftList.vue";
 import PageHandle from "components/content/Chapter/PageHandle.vue";
+import ChapterList from "components/content/Chapter/ChapterList.vue";
+import ShowReply from "components/content/Chapter/ShowReply.vue";
 export default {
   name: "Chapter",
   components: {
@@ -26,6 +32,8 @@ export default {
     RightList,
     LeftList,
     PageHandle,
+    ChapterList,
+    ShowReply,
   },
   created() {
     this.getText();
@@ -77,5 +85,16 @@ export default {
   justify-content: center;
   height: 100vh;
   margin: 0 auto;
+}
+
+.enter-show-enter-active,
+.enter-show-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.enter-show-enter,
+.enter-show-leave-to {
+  opacity: 0;
+  transform: translateY(-100px);
 }
 </style>

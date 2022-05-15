@@ -12,6 +12,8 @@ import Search from 'views/Search.vue'
 import UserHandle from 'components/content/AdminTable/MainContent/UserHandle.vue'
 import BookHandle from 'components/content/AdminTable/MainContent/BookHandle.vue'
 import CommentHandle from 'components/content/AdminTable/MainContent/CommentHandle.vue'
+import ReplyHandle from 'components/content/AdminTable/MainContent/ReplyHandle.vue'
+import Notice from 'components/content/AdminTable/MainContent/Notice.vue'
 import CollectHandle from 'components/content/AdminTable/MainContent/CollectHandle.vue'
 Vue.use(VueRouter)
 
@@ -88,6 +90,15 @@ const routes = [
         path: "comment",
         name: "comment",
         component: CommentHandle,
+      },
+      {
+        path: "reply",
+        name: "reply",
+        component: ReplyHandle,
+      }, {
+        path: "notice",
+        name: "notice",
+        component: Notice
       },
       {
         path: "collect",

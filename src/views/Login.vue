@@ -42,13 +42,13 @@
           <div class="account">
             <label>
               <i class="iconfont">&#xe630;</i>
-              <input type="text" placeholder="用户名/账号" />
+              <input type="text" placeholder="用户名/账号" v-model="user" />
             </label>
           </div>
           <div class="psw">
             <label>
               <i class="iconfont">&#xe62f;</i>
-              <input type="password" placeholder="密码" />
+              <input type="password" placeholder="密码" v-model="psw" />
             </label>
           </div>
         </div>
@@ -93,14 +93,17 @@ export default {
         username: this.user,
         password: this.psw,
       };
+      console.log(data);
       getUser(0, data).then((res) => {
         if (res.data.code == 200) {
           // console.log(res.data.data);
           localStorage.setItem("nick", res.data.data.nick);
           localStorage.setItem("token", res.data.data.token.data);
-          this.$router.replace({
-            path: "/home",
-          });
+          if (this.defindex == 0) {
+            this.$router.replace("/home");
+          } else {
+            this.$router.replace("/table");
+          }
           setTimeout(() => {
             window.location.reload();
           }, 100);

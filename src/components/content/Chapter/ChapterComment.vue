@@ -13,7 +13,7 @@
             v-model="comment"
           ></textarea>
           <div class="tool">
-            <span class="send" @click="getComment">发布</span>
+            <span class="send" @click="sendComment()">发布</span>
           </div>
         </div>
       </div>
@@ -38,8 +38,19 @@ export default {
     this.totalcomment();
   },
   methods: {
-    getComment() {
-      this.$store.commit("increment");
+    sendComment() {
+      let data = {
+        book_id: this.$route.params.bookid,
+        chapter_id: this.$route.params.chapterid,
+        content: this.comment,
+        nick: this.$store.state.nick,
+      };
+      getCR(2, data, this.$store.state.token).then((res) => {
+        if (res.code == 200) {
+          this.totalcomment();
+        }
+      });
+      this.comment = "";
     },
     totalcomment() {
       let data = {

@@ -46,6 +46,7 @@ export default {
     },
     addBook(item) {
       getShelf(2, item, this.$store.state.token).then((res) => {
+        alert("添加成功!");
         console.log(res);
       });
     },
